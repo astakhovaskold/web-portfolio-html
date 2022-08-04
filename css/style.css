@@ -110,6 +110,10 @@ q {
     line-height: 1;
 }
 
+.navbar--footer {
+    padding: 32px 0;
+}
+
 .logo {
     color: var(--black);
 }
@@ -451,14 +455,6 @@ q {
 
 .footer__img {
     display: flex;
-}
-
-.footer__bar {
-    padding: 32px 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .footer__copyright {
