@@ -358,3 +358,42 @@ q {
     display: flex;
     flex-direction: column;
 }
+
+.footer {
+    background: var(--black);
+}
+
+.footer-container {
+    margin: 0 80px;
+}
+
+.footer__information {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+}
+
+.footer__text {
+    font-size: 72px;
+    color: var(--light);
+}
+
+.footer__ad {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.get-in-touch {
+    border: 1px solid var(--light);
+    border-radius: 170px;
+    padding: 24px 48px;
+    background: var(--light);
+    color: var(--black);
+    text-align: center;
+
+}
+
+.footer-button {
+    text-decoration: none;
+}
