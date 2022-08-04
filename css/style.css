@@ -357,8 +357,4 @@ q {
 .testimonials-author__person {
     display: flex;
     flex-direction: column;
-
-}
- .q{
-    quotes: "\201c" "\201d";
 }
