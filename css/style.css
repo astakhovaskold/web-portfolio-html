@@ -132,12 +132,16 @@ q {
 
 .header {
     position: relative;
+    overflow: hidden;
 
     background: var(--bg-gray);
 }
 
 .navbar {
     padding-top: 26px;
+
+    position: relative;
+    z-index: 10;
 
     display: flex;
     align-items: center;
@@ -254,9 +258,31 @@ q {
 .greetings__hand {
     padding: 20px 30px;
 
-    border-radius: 50% 0 0 50%;
+    display: flex;
+    align-items: center;
+
+    column-gap: 24px;
+
+    border-radius: 64px 0 0 64px;
     background: var(--black);
     font-size: 56px;
+
+    position: relative;
+    right: -260px;
+    transition: .3s right;
+}
+
+.greetings__hand:hover {
+    right: 0;
+}
+
+.greetings__hand::after {
+    content: 'Hi I\2019m Ayush';
+
+    display: flex;
+
+    font-size: var(--text-xl);
+    color: #fff;
 }
 
 @media screen and (max-width: 992px) {
@@ -264,6 +290,79 @@ q {
         padding: 16px 24px;
         font-size: var(--text-xl);
     }
+}
+
+/*
+    Hamburger
+ */
+
+.hamburger {
+    padding: 20px;
+    margin: 40px 40px 0 0;
+    width: 80px;
+    aspect-ratio: 1;
+
+    position: sticky;
+    top: 40px;
+    left: 100%;
+    z-index: 1000;
+
+    border: none;
+    border-radius: 9999px;
+    background: var(--black);
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition: .3s background-color;
+}
+
+.hamburger-slice {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+}
+
+.hamburger-slice::before,
+.hamburger-slice::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+
+    background: #fff;
+
+    transition: .3s transform, background-color;
+}
+
+.hamburger-slice::before,
+.hamburger-slice::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+
+    background: #fff;
+}
+
+.hamburger.open {
+    background: #fff;
+}
+
+.hamburger.open .hamburger-slice::before,
+.hamburger.open .hamburger-slice::after {
+    position: absolute;
+    background: #000;
+}
+
+.hamburger.open .hamburger-slice::before {
+    transform: rotate(-45deg);
+}
+
+.hamburger.open .hamburger-slice::after {
+    transform: rotate(45deg);
 }
 
 /*
