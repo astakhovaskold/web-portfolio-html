@@ -4,6 +4,10 @@
 
 document.querySelector('.hamburger').addEventListener('click', function (e) {
     const hamburger = e.currentTarget;
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const overlay = document.querySelector('.overlay');
 
     hamburger.classList.toggle('open');
+    hamburgerMenu.classList.toggle('open');
+    overlay.classList.toggle('open');
 })

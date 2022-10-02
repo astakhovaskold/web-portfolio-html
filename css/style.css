@@ -92,6 +92,16 @@ q {
     quotes: "\201c" "\201d";
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
 @media screen and (max-width: 992px) {
     h1 {
         font-size: var(--text-3xl);
@@ -303,9 +313,9 @@ q {
     aspect-ratio: 1;
 
     position: sticky;
-    top: 40px;
+    top: 60px;
     left: 100%;
-    z-index: 1000;
+    z-index: 999;
 
     border: none;
     border-radius: 9999px;
@@ -349,6 +359,15 @@ q {
 
 .hamburger.open {
     background: #fff;
+
+    margin: 0;
+
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    left: auto;
+
+    z-index: 1100;
 }
 
 .hamburger.open .hamburger-slice::before,
@@ -363,6 +382,87 @@ q {
 
 .hamburger.open .hamburger-slice::after {
     transform: rotate(45deg);
+}
+
+/*
+    Hamburger Menu
+ */
+
+/*
+.hamburger-menu:not(.open) {
+    display: none;
+}
+*/
+
+.hamburger-menu {
+    padding: 0 64px;
+
+    height: 100%;
+    width: 720px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 120px;
+
+    background-color: var(--black);
+}
+
+.hamburger-menu-main__list{
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 28px;
+}
+
+.hamburger-menu-side__list{
+    list-style: none;
+
+    display: flex;
+    column-gap: 32px;
+}
+
+.hamburger-menu-main__element{
+    color: var(--light);
+
+    font-size: var(--text-2xl);
+}
+
+.hamburger-menu-side__element{
+    font-size: var(--text-base);
+
+    color: var(--light);
+}
+
+.hamburger-menu__link {
+    text-decoration: none;
+    color: var(--light);
+}
+
+.overlay {
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    right: -100vw;
+
+    transition: .3s right;
+}
+
+.overlay.open {
+    background: rgba(11, 12, 14, 0.4);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.overlay--hamburger {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /*
