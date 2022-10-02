@@ -92,6 +92,16 @@ q {
     quotes: "\201c" "\201d";
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
 @media screen and (max-width: 992px) {
     h1 {
         font-size: var(--text-3xl);
@@ -298,12 +308,12 @@ q {
 
 .hamburger {
     padding: 20px;
-    margin: 40px 40px 0 0;
+    margin: 0px 40px 0 0;
     width: 80px;
     aspect-ratio: 1;
 
     position: sticky;
-    top: 40px;
+    top: 60px;
     left: 100%;
     z-index: 1000;
 
@@ -730,4 +740,63 @@ q {
 
 .footer__copyright {
     color: var(--bg-gray);
+}
+
+.hamburger-menu {
+    height: 100vh;
+
+    width: 720px;
+
+    background-color: var(--black);
+
+    position: relative;
+    left: 101%;
+}
+
+.hamburger-menu.open{
+    position: sticky;
+    top: .1px;
+    left: 100%;
+    z-index: 999;
+}
+
+.hamburger-menu-main{
+    padding: 120px 97px;
+}
+
+.hamburger-menu-side{
+    padding: 0 96px ;
+    padding-bottom: 56px;
+}
+
+.hamburger-menu-main__list{
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 28px;
+}
+
+.hamburger-menu-side__list{
+    list-style: none;
+
+    display: flex;
+    column-gap: 32px;
+}
+
+.hamburger-menu-main__element{
+    color: var(--light);
+
+    font-size: var(--text-2xl);
+}
+
+.hamburger-menu-side__element{
+    font-size: var(--text-base);
+
+    color: var(--light);
+}
+
+.hamburger-menu__link {
+    text-decoration: none;
+    color: var(--light);
 }
