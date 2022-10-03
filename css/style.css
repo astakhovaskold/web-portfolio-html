@@ -831,3 +831,146 @@ li {
 .footer__copyright {
     color: var(--bg-gray);
 }
+
+    /*Form*/
+.contact-form {
+    display: none;
+
+    position: fixed;
+    bottom: 20px;
+    right: calc(100% - 69%);
+    left: auto;
+
+    max-width: 740px;
+    border: #0B0C0E 1px solid;
+    border-radius: 2%;
+
+    background-color: var(--light);
+
+    z-index: 1100;
+
+}
+
+.contact-form.open {
+    display: flex;
+}
+
+.container-form{
+    padding: 40px 56px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+}
+
+.close-form {
+    position: relative;
+
+    right: 0;
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+    background-color: var(--black);
+    border: none;
+
+    cursor: pointer;
+}
+
+.head-and-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-form__slice {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+}
+
+.close-form__slice::before,
+.close-form__slice::after {
+
+    content: '';
+    width: 60%;
+    height: 3px;
+
+    position: absolute;
+
+    background-color: var(--light);
+}
+.close-form__slice::before{
+    transform: rotate(-45deg);
+}
+
+.close-form__slice::after{
+    transform: rotate(45deg);
+}
+
+.contact-form__head{
+    padding-bottom: 16px;
+}
+
+.contact-form__header{
+    font-size: var(--text-2xl);
+    color: var(--black);
+}
+
+.contact-form__text {
+    font-size: var(--text-base);
+}
+
+.contact-form__information-block{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--black);
+}
+
+.contact-form__information {
+    margin: 12px 0;
+
+    border: none;
+
+    font-size: var(--text-lg);
+
+    background-color: var(--light);
+}
+
+.contact-form__information::placeholder {
+    font-weight: 400;
+}
+
+.contact-form__message{
+    height: 50px;
+
+    margin: 12px 0 0;
+    resize: vertical;
+
+    border: none;
+
+    font-size: var(--text-lg);
+
+    background-color: var(--light);
+}
+
+.contact-form__message::placeholder {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.submit-form {
+
+    padding: 24px 72px ;
+
+    border: none;
+    background-color: var(--black);
+    border-radius: 170px;
+
+    font-size: var(--text-base);
+    color: var(--light);
+
+    cursor: pointer;
+}
+
