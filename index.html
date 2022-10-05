@@ -237,7 +237,7 @@
             </div>
 
             <div>
-                <button class="button">Get in touch</button>
+                <button class="button get-in-touch" data-modal="open" data-target="#modal-contact-from">Get in touch</button>
             </div>
         </div>
 
@@ -256,7 +256,7 @@
     </div>
 </footer>
 
-<div class="overlay overlay--hamburger">
+<div class="overlay overlay--right">
     <div class="hamburger-menu">
         <div class="hamburger-menu-main">
             <ul class="hamburger-menu-main__list">
@@ -279,43 +279,41 @@
 </div>
 
 <div class="overlay">
-    <form class="contact-form" action="">
-        <div class="container-form">
-            <div class="head-and-button">
-                <div class="contact-form__head">
-                    <span class="contact-form__header">Contact Us</span>
+    <div class="modal" id="modal-contact-from">
+        <button type="button" class="close" data-modal="close">&times;</button>
+
+        <form class="form" action="">
+            <h3 class="form__title">Contact Us</h3>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="James Robert" required>
                 </div>
 
-                <button class="close-form">
-                    <div class="close-form__position"><span class="close-form__slice"></span></div>
-                </button>
-            </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="ayush.barnwal@brightscout.com" required>
+                </div>
 
-            <div class="contact-form__information-block">
-                <span class="contact-form__text">Name</span>
-                <input class="contact-form__information" type="name" name="name" placeholder="James Robert" required>
-            </div>
+                <div class="input-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" name="subject" id="subject" placeholder="For web design work Enquire">
+                </div>
 
-            <div class="contact-form__information-block">
-                <span class="contact-form__text">Email</span>
-                <input class="contact-form__information" type="email" name="email" placeholder="ayush.barnwal@brightscout.com" required>
-            </div>
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" placeholder="Type your Message" cols="30"
+                              rows="10"></textarea>
+                </div>
 
-            <div class="contact-form__information-block">
-                <span class="contact-form__text">Subject</span>
-                <input class="contact-form__information" type="text" name="subject" placeholder="For web design work Enquire">
+                <button type="submit" class="button button--inverse">Submit</button>
             </div>
-
-            <div class="contact-form__information-block">
-                <span class="contact-form__text">Message</span>
-                <textarea class="contact-form__message" name="message" placeholder="Type your Message" cols="30" rows="10"></textarea>
-            </div>
-
-            <div><input class="submit-form" type="submit" value="Submit"></div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
+<div class="overlay"></div>
 
 <script src="./js/script.js"></script>
 </body>
