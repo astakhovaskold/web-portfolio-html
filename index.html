@@ -282,18 +282,23 @@
     <div class="modal" id="modal-contact-from">
         <button type="button" class="close" data-modal="close">&times;</button>
 
-        <form class="form" action="">
+        <form class="form" action="" novalidate>
             <h3 class="form__title">Contact Us</h3>
 
             <div class="form-group">
                 <div class="input-group">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="James Robert" required>
+                    <input type="text" name="name" id="name" data-type="WORD" placeholder="James Robert" required>
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="ayush.barnwal@brightscout.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="guests">Guests</label>
+                    <input type="number" name="guests" id="guests" placeholder="2" min="0" max="10">
                 </div>
 
                 <div class="input-group">
