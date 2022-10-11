@@ -184,6 +184,11 @@ button {
     row-gap: 12px;
 }
 
+.input-group-error {
+    font-size: var(--text-sm);
+    color: red;
+}
+
 input {
     padding-bottom: 12px;
 
@@ -194,6 +199,10 @@ input {
     outline: none;
     border: none;
     border-bottom: 1px solid var(--black);
+}
+
+input.invalid {
+    border-bottom: red solid 1px;
 }
 
 textarea {
@@ -209,6 +218,16 @@ textarea {
     font-size: var(--text-lg);
 
     background-color: var(--light);
+}
+
+label.required {
+    display: flex;
+    column-gap: 4px;
+}
+
+label.required::after {
+    content: '*';
+    color: red;
 }
 
 /*
