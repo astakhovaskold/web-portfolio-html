@@ -201,10 +201,6 @@ input {
     border-bottom: 1px solid var(--black);
 }
 
-input.invalid {
-    border-bottom: red solid 1px;
-}
-
 textarea {
     height: 160px;
 
@@ -218,6 +214,10 @@ textarea {
     font-size: var(--text-lg);
 
     background-color: var(--light);
+}
+
+input.invalid, textarea.invalid {
+    border-bottom: red solid 1px;
 }
 
 label.required {
