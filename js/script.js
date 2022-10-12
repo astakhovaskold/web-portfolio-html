@@ -2,8 +2,9 @@
  * Created by ASTAKHOV A.A. on 01.10.2022
  */
 
-document.querySelector('.hamburger').addEventListener(' click', function (e) {
+document.querySelector('.hamburger').addEventListener('click', function (e) {
     const hamburger = e.currentTarget;
+
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const overlay = hamburgerMenu.closest('.overlay');
 
@@ -33,27 +34,16 @@ document.querySelector('[data-modal="close"]').addEventListener('click', functio
     modal.classList.remove('open');
 })
 
-document.querySelectorAll('form').forEach((form) => {
-    form.querySelectorAll('input[required]').forEach((input) => {
-        input.closest('.input-group').querySelector('label').classList.add('required');
-    })
-})
+document.addEventListener('DOMContentLoaded', function () {
+    const validateFormItem = (input) => {
+        const {value, type} = input;
 
-document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
+        const dataType = input.dataset?.type;
 
-    const form = e.target;
-
-    const DATA_TYPE = {
-        DIGIT: 'DIGIT',
-        WORD: 'WORD',
-    }
-
-    form.querySelectorAll('input').forEach((input) => {
-        const type = input.type;
-        const value = input.value;
-
-        const dataType = input.dataset.type;
+        const DATA_TYPE = {
+            DIGIT: 'DIGIT',
+            WORD: 'WORD',
+        }
 
         const appendErrorMessage = (message = 'Заполните поле корректно') => {
             input.insertAdjacentHTML('afterend', `<span class="input-group-error">${message}</span>`);
@@ -71,12 +61,34 @@ document.querySelector('form').addEventListener('submit', function (e) {
                         appendErrorMessage();
 
                         break;
-                    case 'number':
-                        appendErrorMessage('Значение должно быть в диапазоне с ... до ...');
+                    case 'number': {
+                            // деструктуризация
+                            const {min, max} = input;
+
+                            const message = () => {
+                                if (!min || !max) return 'Заполните поле корректно';
+
+                                return `Значение должно быть в диапазоне${min ? ` c ${min}` : ''}${max ? ` до ${max}` : ''}`;
+                            }
+
+                            appendErrorMessage(message());
+                        }
 
                         break;
-                    default:
-                        appendErrorMessage('Поле должно содержать ...');
+                    default: {
+                            const {value} = input;
+                            const dataType = input.dataset?.type;
+
+                            const message = () => {
+                                if (!value || value && !dataType) return 'Заполните поле корректно';
+
+                                if (dataType === DATA_TYPE.WORD) return 'Поле не должно содержать цифры';
+
+                                if (dataType === DATA_TYPE.DIGIT) return 'Поле должно содержать только цифры';
+                            }
+
+                            appendErrorMessage(message());
+                        }
 
                         break;
                 }
@@ -123,5 +135,25 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
                 break;
         }
-   })
-});
+    }
+
+    document.querySelectorAll('form').forEach((form) => {
+        form.querySelectorAll('input, textarea').forEach((input) => {
+            if (input.hasAttribute('required')) {
+                input.closest('.input-group').querySelector('label').classList.add('required');
+            }
+
+            input.addEventListener('input', (e) => validateFormItem(e.target));
+        })
+    })
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+
+        form.querySelectorAll('input, textarea').forEach(validateFormItem);
+
+        if (!form.querySelectorAll('input.invalid, textarea.invalid')?.length) form.submit();
+    });
+})
