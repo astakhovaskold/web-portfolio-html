@@ -1,0 +1,64 @@
+.formix {
+  &-form-item {
+    position: relative;
+  }
+
+  &-select {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid black;
+    cursor: pointer;
+
+    &::before {
+      content: '▼';
+      color: black;
+
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+
+      display: flex;
+      align-items: center;
+    }
+
+    > .formix-option {
+      border-bottom: none !important;
+    }
+  }
+
+  &-option {
+    padding: 16px 20px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #eee;
+    }
+
+    &-list {
+      max-height: 170px;
+      overflow-y: scroll;
+
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      right: 0;
+      top: 56px;
+
+      display: flex;
+      flex-direction: column;
+
+      background: #fff;
+      border: 1px solid black;
+
+      .formix-option {
+        &:hover {
+          background: #eee;
+        }
+      }
+    }
+  }
+}
