@@ -27,6 +27,7 @@ body {
     margin: 0;
 
     font-family: 'IBM Plex Sans', sans-serif;
+    font-size: var(--text-base);
     color: var(--dark);
 
     background: var(--light);
@@ -92,6 +93,16 @@ q {
     quotes: "\201c" "\201d";
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
 @media screen and (max-width: 992px) {
     h1 {
         font-size: var(--text-3xl);
@@ -113,6 +124,10 @@ q {
     ===
 */
 
+button {
+    cursor: pointer;
+}
+
 .button {
     padding: 24px 48px;
 
@@ -126,18 +141,111 @@ q {
     text-align: center;
 }
 
+.button--inverse {
+    background: var(--black);
+    color: var(--light);
+}
+
+/*
+    Form
+ */
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+
+    row-gap: 48px;
+}
+
+.form button[type="submit"] {
+    align-self: flex-start;
+}
+
+.form__title {
+    margin: 0;
+
+    font-size: var(--text-2xl);
+    color: var(--black);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 32px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 12px;
+}
+
+.input-group-error {
+    font-size: var(--text-sm);
+    color: red;
+}
+
+input {
+    padding-bottom: 12px;
+
+    font-size: var(--text-lg);
+
+    background-color: var(--light);
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--black);
+}
+
+textarea {
+    height: 160px;
+
+    resize: vertical;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--black);
+
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: var(--text-lg);
+
+    background-color: var(--light);
+}
+
+input.invalid, textarea.invalid {
+    border-bottom: red solid 1px;
+}
+
+label.required {
+    display: flex;
+    column-gap: 4px;
+}
+
+label.required::after {
+    content: '*';
+    color: red;
+}
+
 /*
     Header
 */
 
 .header {
     position: relative;
+    overflow: hidden;
 
     background: var(--bg-gray);
 }
 
 .navbar {
     padding-top: 26px;
+
+    position: relative;
+    z-index: 10;
 
     display: flex;
     align-items: center;
@@ -254,9 +362,31 @@ q {
 .greetings__hand {
     padding: 20px 30px;
 
-    border-radius: 50% 0 0 50%;
+    display: flex;
+    align-items: center;
+
+    column-gap: 24px;
+
+    border-radius: 64px 0 0 64px;
     background: var(--black);
     font-size: 56px;
+
+    position: relative;
+    right: -260px;
+    transition: .3s right;
+}
+
+.greetings__hand:hover {
+    right: 0;
+}
+
+.greetings__hand::after {
+    content: 'Hi I\2019m Ayush';
+
+    display: flex;
+
+    font-size: var(--text-xl);
+    color: #fff;
 }
 
 @media screen and (max-width: 992px) {
@@ -264,6 +394,181 @@ q {
         padding: 16px 24px;
         font-size: var(--text-xl);
     }
+}
+
+/*
+    Hamburger
+ */
+
+.hamburger {
+    padding: 20px;
+    margin: 40px 40px 0 0;
+    width: 80px;
+    aspect-ratio: 1;
+
+    position: sticky;
+    top: 60px;
+    left: 100%;
+    z-index: 999;
+
+    border: none;
+    border-radius: 9999px;
+    background: var(--black);
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition: .3s background-color;
+}
+
+.hamburger-slice {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+}
+
+.hamburger-slice::before,
+.hamburger-slice::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+
+    background: #fff;
+
+    transition: .3s transform, background-color;
+}
+
+.hamburger-slice::before,
+.hamburger-slice::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+
+    background: #fff;
+}
+
+.hamburger.open {
+    background: #fff;
+
+    margin: 0;
+
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    left: auto;
+
+    z-index: 1100;
+}
+
+.hamburger.open .hamburger-slice::before,
+.hamburger.open .hamburger-slice::after {
+    position: absolute;
+    background: #000;
+}
+
+.hamburger.open .hamburger-slice::before {
+    transform: rotate(-45deg);
+}
+
+.hamburger.open .hamburger-slice::after {
+    transform: rotate(45deg);
+}
+
+/*
+    Hamburger Menu
+ */
+
+/*
+.hamburger-menu:not(.open) {
+    display: none;
+}
+*/
+
+.hamburger-menu {
+    padding: 0 64px;
+
+    height: 100%;
+    width: 720px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 120px;
+
+    background-color: var(--black);
+}
+
+.hamburger-menu-main__list{
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 28px;
+}
+
+.hamburger-menu-side__list{
+    list-style: none;
+
+    display: flex;
+    column-gap: 32px;
+}
+
+.hamburger-menu-main__element{
+    color: var(--light);
+
+    font-size: var(--text-2xl);
+}
+
+.hamburger-menu-side__element{
+    font-size: var(--text-base);
+
+    color: var(--light);
+}
+
+.hamburger-menu__link {
+    text-decoration: none;
+    color: var(--light);
+}
+
+.overlay {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    overflow-y: scroll;
+
+    transition: .3s right;
+}
+
+.overlay.open {
+    background: rgba(11, 12, 14, 0.4);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.overlay:not(.overlay--right) {
+    left: 0;
+    right: 0;
+}
+
+.overlay--right {
+    justify-content: flex-end;
+    left: unset;
+    right: -100vw;
+}
+
+.overlay--right.open {
+    right: 0;
 }
 
 /*
@@ -631,4 +936,50 @@ q {
 
 .footer__copyright {
     color: var(--bg-gray);
+}
+
+/*
+    Modal
+ */
+
+.modal:not(.open) {
+    display: none;
+}
+
+.modal {
+    margin: 80px auto;
+    padding: 70px 56px;
+
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 1100;
+
+    max-width: 740px;
+    width: 100%;
+
+    border-radius: 10px;
+
+    background-color: var(--light);
+    box-sizing: border-box;
+}
+
+.close {
+    position: absolute;
+
+    right: 24px;
+    top: 24px;
+
+    width: 80px;
+    height: 80px;
+
+    font-size: 64px;
+    color: var(--light);
+
+    border-radius: 50%;
+    background-color: var(--black);
+    border: none;
+
+    cursor: pointer;
 }
